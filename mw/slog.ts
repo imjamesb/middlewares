@@ -47,14 +47,14 @@ export function simpleLogger(
       "%s %s%s%s",
       req.method,
       req.url,
-      time.length > 0 ? ` ${time} ` : "",
+      time.length > 0 ? ` ${time} ` : " ",
       error.message,
     )
     : sprintf(
       "%s %s%s%d %s",
       req.method,
       req.url,
-      time.length > 0 ? ` ${time} ` : "",
+      time.length > 0 ? ` ${time} ` : " ",
       res?.status,
       res?.statusText,
     );

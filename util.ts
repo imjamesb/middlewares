@@ -51,3 +51,10 @@ export function nms(end: number, start: number) {
 export function delay(ms: number): Promise<void> {
   return new Promise((r) => setTimeout(r, ms));
 }
+
+export function json(data: unknown, init?: ResponseInit) {
+  init ??= {};
+  init.headers = new Headers(init.headers);
+  init.headers.set("content-type", "application/json");
+  return new Response(JSON.stringify(data), init);
+}

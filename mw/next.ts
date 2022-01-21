@@ -1,8 +1,8 @@
 // Imports
-import type { Handler } from "../mw.ts";
+import type { NextFn } from "../mw.ts";
 
-export function next(): Handler {
-  return (___, __, _) => _();
+export function next(___: Request, __: ResponseInit, _: NextFn) {
+  return _();
 }
 
 export default next;

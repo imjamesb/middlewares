@@ -18,8 +18,9 @@ export function cors(options?: CORSOptions): Handler {
       response.headers.set("Access-Control-Allow-Origin", "*");
       return response;
     }
-    const origin = new URL(req.url).origin;
-    if (allowedOrigins[origin]) {
+    const origin = req.headers.get("origin");
+    if (origin && allowedOrigins[origin]) {
+      console.log("accepted", origin);
       response.headers.set("Access-Control-Allow-Origin", origin);
     }
     return response;

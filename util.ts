@@ -1,3 +1,4 @@
+// deno-lint-ignore-file no-unused-vars
 // days, hours, minutes, seconds, milliseconds, microseconds, nanoseconds
 
 export function now() {
@@ -7,8 +8,8 @@ export function now() {
 function unit(n: number) {
   const divided = n / 1000;
   const floored = Math.floor(divided);
-  const unit = (divided - floored) * 1000;
-  return [unit, floored];
+  const unit = Math.floor((divided - floored) * 1000);
+  return [floored, unit];
 }
 
 function ustr(n: number, d: string) {
@@ -42,7 +43,11 @@ export function nms(end: number, start: number) {
   str += ustr(minute, "m");
   str += ustr(second, "s");
   str += ustr(millisecond, "ms");
-  str += ustr(microsecond, "μs");
-  str += ustr(nanosecond, "ns");
+  // str += ustr(microsecond, "μs");
+  // str += ustr(nanosecond, "ns");
   return str;
+}
+
+export function delay(ms: number): Promise<void> {
+  return new Promise((r) => setTimeout(r, ms));
 }
